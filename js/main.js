@@ -103,3 +103,22 @@ function deleteitem(index) {
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showtask();
 }
+
+// deleteall
+let deleteallbtn = document.getElementById("deleteallbtn");
+deleteallbtn.addEventListener("click", function () {
+  let savetaskbtn = document.getElementById("savetaskbtn");
+  let addtaskbtn = document.getElementById("addtaskbtn");
+  let webtask = localStorage.getItem("localtask");
+  let taskObj = JSON.parse(webtask);
+  if (webtask == null) {
+    taskObj = [];
+  } else {
+    taskObj = JSON.parse(webtask);
+    taskObj = [];
+  }
+  savetaskbtn.style.display = "none";
+  addtaskbtn.style.display = "block";
+  localStorage.setItem("localtask", JSON.stringify(taskObj));
+  showtask();
+});
