@@ -45,3 +45,16 @@ function showtask() {
   });
   addedtasklist.innerHTML = html;
 }
+
+function completetask(index) {
+  let webtask = localStorage.getItem("localtask");
+  let taskObj = JSON.parse(webtask);
+  let k = taskObj[index]["completeStatus"];
+  if (k === true) {
+    taskObj[index]["completeStatus"] = false;
+  } else {
+    taskObj[index]["completeStatus"] = true;
+  }
+  localStorage.setItem("localtask", JSON.stringify(taskObj));
+  showtask();
+}
