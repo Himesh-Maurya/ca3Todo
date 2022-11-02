@@ -58,3 +58,17 @@ function completetask(index) {
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showtask();
 }
+
+// edittask
+function edittask(index) {
+  let saveindex = document.getElementById("saveindex");
+  let addtaskbtn = document.getElementById("addtaskbtn");
+  let savetaskbtn = document.getElementById("savetaskbtn");
+  saveindex.value = index;
+  let webtask = localStorage.getItem("localtask");
+  let taskObj = JSON.parse(webtask);
+
+  addtaskinput.value = taskObj[index]["task_name"];
+  addtaskbtn.style.display = "none";
+  savetaskbtn.style.display = "block";
+}
