@@ -72,3 +72,25 @@ function edittask(index) {
   addtaskbtn.style.display = "none";
   savetaskbtn.style.display = "block";
 }
+
+// savetask
+let savetaskbtn = document.getElementById("savetaskbtn");
+savetaskbtn.addEventListener("click", function () {
+  let addtaskbtn = document.getElementById("addtaskbtn");
+  let webtask = localStorage.getItem("localtask");
+  let taskObj = JSON.parse(webtask);
+  let saveindex = document.getElementById("saveindex").value;
+
+  for (keys in taskObj[saveindex]) {
+    if (keys == "task_name") {
+      taskObj[saveindex].task_name = addtaskinput.value;
+    }
+  }
+  // taskObj[saveindex] = {'task_name':addtaskinput.value, 'completeStatus':false} ;
+  //  taskObj[saveindex][task_name] = addtaskinput.value;
+  savetaskbtn.style.display = "none";
+  addtaskbtn.style.display = "block";
+  localStorage.setItem("localtask", JSON.stringify(taskObj));
+  addtaskinput.value = "";
+  showtask();
+});
